@@ -9,15 +9,15 @@ Given this class that represents a giant:
 
 ```swift
 class Giant {
- var name: String
- var weight: Double
- let homePlanet: String
+var name: String
+var weight: Double
+let homePlanet: String
 
- init(name: String, weight: Double, homePlanet: String) {
- self.name = name
- self.weight = weight
- self.homePlanet = homePlanet
- }
+init(name: String, weight: Double, homePlanet: String) {
+self.name = name
+self.weight = weight
+self.homePlanet = homePlanet
+}
 }
 
 let fred = Giant(name: "Fred", weight: 340.0, homePlanet: "Earth")
@@ -31,8 +31,21 @@ fred.weight = 999.2
 fred.homePlanet = "Mars"
 ```
 
+This will not work because the property of 'homePlanet' is a constant ( let ) and with constants, you are unable to change the property of a constant. Only when we use a variable ( var ) are we allowed to do so. 
+
 Fix the class definition for `Giant` in the space below so that it **does** work:
 
+class Giant {
+var name: String
+var weight: Double
+var homePlanet: String
+
+init(name: String, weight: Double, homePlanet: String) {
+self.name = name
+self.weight = weight
+self.homePlanet = homePlanet
+}
+}
 
 ## Question 2
 
@@ -40,9 +53,9 @@ Take a look at this struct that represents an alien:
 
 ```swift
 struct Alien {
- var name: String
- var height: Double
- var homePlanet: String
+var name: String
+var height: Double
+var homePlanet: String
 }
 let bilbo = Alien(name: "Bilbo", height: 1.67, homePlanet: "Venus")
 ```
@@ -55,7 +68,17 @@ bilbo.height = 1.42
 bilbo.homePlanet = "Saturn"
 ```
 
+// They will not run currently because on line 60, it has that of a constant. 
+
 Change the declaration of `bilbo` so that the above three lines of code **do** work:
+
+struct Alien {
+var name: String
+var height: Double
+var homePlanet: String
+}
+
+var bilbo = Alien(name: "Bilbo", height: 1.67, homePlanet: "Venus")
 
 
 ## Question 3
@@ -70,6 +93,7 @@ jason.name = "Jason"
 
 What will the value of `edgar.name` be after those three lines of code are run? What will the value of `jason.name` be? Why?
 
+// The value of those turned into 'Giant'
 
 ## Question 4
 
@@ -90,16 +114,16 @@ Here's a struct that represents a bank account:
 
 ```swift
 struct BankAccount {
- var owner: String
- var balance: Double
+var owner: String
+var balance: Double
 
- func deposit(_ amount: Double) {
- balance += amount
- }
+func deposit(_ amount: Double) {
+balance += amount
+}
 
- func withdraw(_ amount: Double) {
- balance -= amount
- }
+func withdraw(_ amount: Double) {
+balance -= amount
+}
 }
 ```
 
@@ -232,11 +256,11 @@ Given the below array of color dictionaries, create an array of `RGBColor`.
 
 ```swift
 let colorDictArray: [[String: Double]] = [["red": 1.0, "green": 0.0, "blue": 0.0],
- ["red": 0.0, "green": 1.0, "blue": 0.0],
- ["red": 0.0, "green": 0.0, "blue": 1.0],
- ["red": 0.6, "green": 0.9, "blue": 0.0],
- ["red": 0.2, "green": 0.2, "blue": 0.5],
- ["red": 0.5, "green": 0.1, "blue": 0.9],]
+["red": 0.0, "green": 1.0, "blue": 0.0],
+["red": 0.0, "green": 0.0, "blue": 1.0],
+["red": 0.6, "green": 0.9, "blue": 0.0],
+["red": 0.2, "green": 0.2, "blue": 0.5],
+["red": 0.5, "green": 0.1, "blue": 0.9],]
 ```
 
 
@@ -255,10 +279,10 @@ Create a function outside of your `Movie` class called `makeMovie` that takes in
 
 ```swift
 let dieHardDict: [String: Any] = ["name": "Die Hard",
- "year" : 1987,
- "genre": "action",
- "cast": ["Bruce Willis", "Alan Rickman"],
- "description": "John Mclain saves the day!"]
+"year" : 1987,
+"genre": "action",
+"cast": ["Bruce Willis", "Alan Rickman"],
+"description": "John Mclain saves the day!"]
 ```
 
 Hint: To use a value type `Any`, you will need to cast it to its expected type.
@@ -267,7 +291,7 @@ Below, `nameAsAny` is of type `Any` because thats the type of the value in the d
 
 ```swift
 if let nameAsAny = dieHardDict["name"] {
- print(nameAsAny)
+print(nameAsAny)
 }
 ```
 
@@ -275,7 +299,7 @@ Below, `nameAsString` is of type `String` because the optional binding is attemp
 
 ```swift
 if let nameAsString = dieHardDict["name"] as? String {
- print(nameAsString)
+print(nameAsString)
 }
 ```
 
@@ -283,9 +307,9 @@ If the binding fails it returns `nil`. `1987` cannot be cast as a `String` becau
 
 ```swift
 if let yearAsString = dieHardDict["year"] as? String {
- print(yearAsString)
+print(yearAsString)
 } else {
- print("this didn't work")
+print("this didn't work")
 }
 ```
 
@@ -298,68 +322,68 @@ Given the below array of movie dictionaries, use your function from the last que
 // each element of movies is a Dictionary with the keys
 // 'name','year', 'genre', 'cast' and 'description'
 var movies: [[String:Any]] = [
- [
- "name": "Minions",
- "year": 2015,
- "genre": "animation",
- "cast": ["Sandra Bullock", "Jon Hamm", "Michael Keaton"],
- "description": "Evolving from single-celled yellow organisms at the dawn of time, Minions live to serve, but find themselves working for a continual series of unsuccessful masters, from T. Rex to Napoleon. Without a master to grovel for, the Minions fall into a deep depression. But one minion, Kevin, has a plan."
- ],
- [
- "name": "Shrek",
- "year": 2001,
- "genre": "animation",
- "cast": ["Mike Myers", "Eddie Murphy", "Cameron Diaz"],
- "description": "Once upon a time, in a far away swamp, there lived an ogre named Shrek whose precious solitude is suddenly shattered by an invasion of annoying fairy tale characters. They were all banished from their kingdom by the evil Lord Farquaad. Determined to save their home -- not to mention his -- Shrek cuts a deal with Farquaad and sets out to rescue Princess Fiona to be Farquaad\"s bride. Rescuing the Princess may be small compared to her deep, dark secret."
- ],
- [
- "name": "Zootopia",
- "year": 2016,
- "genre": "animation",
- "cast": ["Ginnifer Goodwin", "Jason Bateman", "Idris Elba"],
- "description": "From the largest elephant to the smallest shrew, the city of Zootopia is a mammal metropolis where various animals live and thrive. When Judy Hopps becomes the first rabbit to join the police force, she quickly learns how tough it is to enforce the law."
- ],
- [
- "name": "Avatar",
- "year": 2009,
- "genre": "action",
- "cast": ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver"],
- "description": "On the lush alien world of Pandora live the Na\"vi, beings who appear primitive but are highly evolved. Because the planet\"s environment is poisonous, human/Na\"vi hybrids, called Avatars, must link to human minds to allow for free movement on Pandora. Jake Sully, a paralyzed former Marine, becomes mobile again through one such Avatar and falls in love with a Na\"vi woman. As a bond with her grows, he is drawn into a battle for the survival of her world."
- ],
- [
- "name": "The Dark Knight",
- "year": 2008,
- "genre": "action",
- "cast": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
- "description": "With the help of allies Lt. Jim Gordon and DA Harvey Dent, Batman has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism."
- ],
- [
- "name": "Transformers",
- "year": 2007,
- "genre": "action",
- "cast": ["Shia LaBeouf", "Megan Fox", "Josh Duhamel"],
- "description": "The fate of humanity is at stake when two races of robots, the good Autobots and the villainous Decepticons, bring their war to Earth. The robots have the ability to change into different mechanical objects as they seek the key to ultimate power. Only a human youth, Sam Witwicky can save the world from total destruction."
- ],
- [
- "name": "Titanic",
- "year": 1997,
- "genre": "drama",
- "cast": ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane"],
- "description": "The ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the White Star Line and, at the time, the largest moving object ever built. She was the most luxurious liner of her era -- the \"ship of dreams\" -- which ultimately carried over 1,500 people to their death in the ice cold waters of the North Atlantic in the early hours of April 15, 1912."
- ],
- [
- "name": "The Hunger Games",
- "year": 2012,
- "genre": "drama",
- "cast": ["Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth"],
- "description": "Katniss Everdeen voluntarily takes her younger sister\"s place in the Hunger Games, a televised competition in which two teenagers from each of the twelve Districts of Panem are chosen at random to fight to the death."
- ],
- [
- "name": "American Sniper",
- "year": 2014,
- "genre": "drama",
- "cast": ["Bradley Cooper", "Sienna Miller", "Kyle Gallner"],
- "description": "Navy S.E.A.L. sniper Chris Kyle\"s pinpoint accuracy saves countless lives on the battlefield and turns him into a legend. Back home to his wife and kids after four tours of duty, however, Chris finds that it is the war he can\"t leave behind."
- ]
+[
+"name": "Minions",
+"year": 2015,
+"genre": "animation",
+"cast": ["Sandra Bullock", "Jon Hamm", "Michael Keaton"],
+"description": "Evolving from single-celled yellow organisms at the dawn of time, Minions live to serve, but find themselves working for a continual series of unsuccessful masters, from T. Rex to Napoleon. Without a master to grovel for, the Minions fall into a deep depression. But one minion, Kevin, has a plan."
+],
+[
+"name": "Shrek",
+"year": 2001,
+"genre": "animation",
+"cast": ["Mike Myers", "Eddie Murphy", "Cameron Diaz"],
+"description": "Once upon a time, in a far away swamp, there lived an ogre named Shrek whose precious solitude is suddenly shattered by an invasion of annoying fairy tale characters. They were all banished from their kingdom by the evil Lord Farquaad. Determined to save their home -- not to mention his -- Shrek cuts a deal with Farquaad and sets out to rescue Princess Fiona to be Farquaad\"s bride. Rescuing the Princess may be small compared to her deep, dark secret."
+],
+[
+"name": "Zootopia",
+"year": 2016,
+"genre": "animation",
+"cast": ["Ginnifer Goodwin", "Jason Bateman", "Idris Elba"],
+"description": "From the largest elephant to the smallest shrew, the city of Zootopia is a mammal metropolis where various animals live and thrive. When Judy Hopps becomes the first rabbit to join the police force, she quickly learns how tough it is to enforce the law."
+],
+[
+"name": "Avatar",
+"year": 2009,
+"genre": "action",
+"cast": ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver"],
+"description": "On the lush alien world of Pandora live the Na\"vi, beings who appear primitive but are highly evolved. Because the planet\"s environment is poisonous, human/Na\"vi hybrids, called Avatars, must link to human minds to allow for free movement on Pandora. Jake Sully, a paralyzed former Marine, becomes mobile again through one such Avatar and falls in love with a Na\"vi woman. As a bond with her grows, he is drawn into a battle for the survival of her world."
+],
+[
+"name": "The Dark Knight",
+"year": 2008,
+"genre": "action",
+"cast": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+"description": "With the help of allies Lt. Jim Gordon and DA Harvey Dent, Batman has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism."
+],
+[
+"name": "Transformers",
+"year": 2007,
+"genre": "action",
+"cast": ["Shia LaBeouf", "Megan Fox", "Josh Duhamel"],
+"description": "The fate of humanity is at stake when two races of robots, the good Autobots and the villainous Decepticons, bring their war to Earth. The robots have the ability to change into different mechanical objects as they seek the key to ultimate power. Only a human youth, Sam Witwicky can save the world from total destruction."
+],
+[
+"name": "Titanic",
+"year": 1997,
+"genre": "drama",
+"cast": ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane"],
+"description": "The ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the White Star Line and, at the time, the largest moving object ever built. She was the most luxurious liner of her era -- the \"ship of dreams\" -- which ultimately carried over 1,500 people to their death in the ice cold waters of the North Atlantic in the early hours of April 15, 1912."
+],
+[
+"name": "The Hunger Games",
+"year": 2012,
+"genre": "drama",
+"cast": ["Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth"],
+"description": "Katniss Everdeen voluntarily takes her younger sister\"s place in the Hunger Games, a televised competition in which two teenagers from each of the twelve Districts of Panem are chosen at random to fight to the death."
+],
+[
+"name": "American Sniper",
+"year": 2014,
+"genre": "drama",
+"cast": ["Bradley Cooper", "Sienna Miller", "Kyle Gallner"],
+"description": "Navy S.E.A.L. sniper Chris Kyle\"s pinpoint accuracy saves countless lives on the battlefield and turns him into a legend. Back home to his wife and kids after four tours of duty, however, Chris finds that it is the war he can\"t leave behind."
+]
 ]
 ```
