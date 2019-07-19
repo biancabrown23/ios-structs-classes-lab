@@ -93,7 +93,7 @@ jason.name = "Jason"
 
 What will the value of `edgar.name` be after those three lines of code are run? What will the value of `jason.name` be? Why?
 
-// The value of those turned into 'Giant'
+// The value of those turned into 'Giant' 
 
 ## Question 4
 
@@ -129,7 +129,22 @@ balance -= amount
 
 Does this code work? Why or why not?
 
+// Code does not work because self is immutable, which means that you wont be able to change it. 
+
 Fix the `BankAccount` struct so it does work.
+
+struct BankAccount {
+var owner: String
+var balance: Double
+
+mutating func deposit(_ amount: Double) {
+balance += amount
+}
+
+mutating func withdraw(_ amount: Double) {
+balance -= amount
+}
+}
 
 Given the code below (which should incorporate any fixes you made):
 
@@ -141,6 +156,7 @@ joeAccount.withdraw(50.0)
 
 What will the value of `joeAccount.balance` be after the above code runs? What about the value of `joeOtherAccount.balance`? Why?
 
+// The value of 'joeAccount.balance' is 50.00 and the value of 'joeOtherAccount.balance' is 100.00. The reason why is because it is iterating from top to bottom so it will 
 
 ## Question 6
 
